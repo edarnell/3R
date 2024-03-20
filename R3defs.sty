@@ -1,0 +1,28 @@
+% R3defs.sty
+\ProvidesPackage{R3defs}
+
+% Common packages
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{geometry}
+\RequirePackage{amsmath}
+\RequirePackage{hyperref}
+
+% Document geometry
+\geometry{a4paper, total={170mm,257mm}, left=20mm, top=20mm}
+
+% Manual spacing between paragraphs
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+% Custom commands
+\newcommand{\qbit}{\ensuremath{\langle 0 | 1 \rangle}}
+
+% Redefine maketitle to exclude author and date in the output, if needed
+\makeatletter
+\def\maketitle{%
+  \begin{center}%
+    {\LARGE \@title \par}%
+  \end{center}%
+  \par
+  \vskip 1.5em}
+\makeatother
