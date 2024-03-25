@@ -4,7 +4,7 @@
             "name": "texPdf",
             "command": "zsh",
             "args": [
-                "./tex_pdf.sh",
+                ".vscode/tex_pdf.sh",
                 "%DOC%"
             ],
             "env": {}
@@ -24,4 +24,7 @@
     "files.associations": {
         "*.tex": "latex"
     },
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.view.pdf.folder": "./pdf",
+    "latex-workshop.view.pdf.file": "./pdf/%DOCFILE%.pdf",
 }

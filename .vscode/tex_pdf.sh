@@ -32,7 +32,7 @@ pdflatex -output-directory=$BUILD_DIR $TEX_FILE
 
 # Check if PDF was generated and move it to the PDF directory
 if [ -f "$BUILD_DIR/${BIB_FILE}.pdf" ]; then
-    mv "$BUILD_DIR/${BIB_FILE}.pdf" "$PDF_DIR/"
+    cp "$BUILD_DIR/${BIB_FILE}.pdf" "$PDF_DIR/"
     echo "PDF moved to $PDF_DIR"
 else
     echo "PDF generation failed."
