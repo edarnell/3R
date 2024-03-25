@@ -1,0 +1,27 @@
+{
+    "latex-workshop.latex.tools": [
+        {
+            "name": "texPdf",
+            "command": "zsh",
+            "args": [
+                "./tex_pdf.sh",
+                "%DOC%"
+            ],
+            "env": {}
+        }
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "Compile with my Script",
+            "tools": [
+                "texPdf"
+            ]
+        }
+    ],
+    "[latex]": {
+        "editor.wordWrap": "on"
+    },
+    "files.associations": {
+        "*.tex": "latex"
+    },
+}

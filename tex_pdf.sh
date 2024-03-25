@@ -1,11 +1,19 @@
 #!/bin/bash
 
-# Define paths
-TEX_FILE="3R.tex"
+# Check if an argument was provided
+if [ $# -eq 0 ]; then
+    echo "No .tex file specified."
+    exit 1
+fi
+
+# Define paths based on provided filename
+TEX_FILE="$1"
 BUILD_DIR="./build"
 PDF_DIR="./pdf"
 AI_DIR="./ai"
-BIB_FILE="3R"
+
+# Extract base filename without extension for use with bibtex
+BIB_FILE=$(basename "$TEX_FILE" .tex)
 
 # Clear the build directory
 rm -rf $BUILD_DIR/*
@@ -23,19 +31,15 @@ pdflatex -output-directory=$BUILD_DIR $TEX_FILE && \
 pdflatex -output-directory=$BUILD_DIR $TEX_FILE
 
 # Check if PDF was generated and move it to the PDF directory
-if [ -f "$BUILD_DIR/${TEX_FILE%.tex}.pdf" ]; then
-    mv "$BUILD_DIR/${TEX_FILE%.tex}.pdf" "$PDF_DIR/"
+if [ -f "$BUILD_DIR/${BIB_FILE}.pdf" ]; then
+    mv "$BUILD_DIR/${BIB_FILE}.pdf" "$PDF_DIR/"
     echo "PDF moved to $PDF_DIR"
 else
     echo "PDF generation failed."
 fi
 
 # Copy and rename relevant files for AI analysis to the AI directory
-# Adjust the file names and extensions as needed
-cp "$BUILD_DIR/${TEX_FILE%.tex}.log" "$AI_DIR/${TEX_FILE%.tex}_log.txt"
-cp "$BUILD_DIR/${TEX_FILE%.tex}.bbl" "$AI_DIR/${TEX_FILE%.tex}_bbl.txt"
+cp "$BUILD_DIR/${BIB_FILE}.log" "$AI_DIR/${BIB_FILE}_log.txt"
+cp "$BUILD_DIR/${BIB_FILE}.bbl" "$AI_DIR/${BIB_FILE}_bbl.txt"
 
-# Add any additional files you need to copy and rename below
-# Example: cp "$BUILD_DIR/otherfile.blg" "$AI_DIR/otherfile_blg.txt"
-
-echo "Relevant files copied to AI directory."
+echo "debug copied to AI directory as .txt"
