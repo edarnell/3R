@@ -33,17 +33,17 @@ plt.xticks([i/8 for i in range(9)], ['0', '1/8', '1/4', '3/8', '1/2', '5/8', '3/
 plt.yticks([])
 
 # Add extra rows with ... and <1|0>
-plt.text(0.5, 8.7, 'Discreteness', ha='center', va='center', fontsize=12)
-plt.text(0.5, 3, '...', ha='center', va='center', fontsize=20)
-plt.text(0.5, 2, '<1|0>', ha='center', va='center', fontsize=12)
-plt.text(0.5, 0.5, 'Continuity', ha='center', va='center', fontsize=12)
+plt.text(0, 8.5, 'Discreteness', ha='left', fontsize=12)
+plt.text(0.5, 3, '...', ha='center', fontsize=20)
+plt.text(0.5, 2, '<1|0>', ha='center', fontsize=12)
+plt.text(0, 2, 'Uncertainty', ha='left', fontsize=12)
+plt.text(0, 0.5, 'Continuity', ha='left', fontsize=12)
 
 
 # Draw solid blue line from 0 to 1
 plt.plot([0, 1], [1, 1], 'b-', linewidth=4)
-
-plt.title('Counting [0,1]')
-plt.xlabel('Position')
+plt.title('Counting [0,1]', ha='center', fontsize=16)
+plt.xlabel('Number')
 plt.ylabel('Bicimal Precision')
 plt.ylim(0, 9)
 plt.savefig('continuity.png')
