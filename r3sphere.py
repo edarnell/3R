@@ -13,38 +13,39 @@ def draw_number_circle_and_line(ax):
     x_circle = np.cos(theta)
     y_circle = np.sin(theta)
 
-    colors = plt.cm.viridis(np.linspace(0, 1, len(multiples)))
-
     ax.plot(np.cos(np.linspace(0, 2*np.pi, 100)), np.sin(np.linspace(0, 2*np.pi, 100)), 'b-', linewidth=2)
-    ax.scatter(x_circle, y_circle, color='green')
-    for i, (x, y, label, color) in enumerate(zip(x_circle, y_circle, circle_labels, colors)):
+    ax.scatter(x_circle, y_circle, color='blue')
+    for i, (x, y, label) in enumerate(zip(x_circle, y_circle, circle_labels)):
         angle = theta[i]
         x_offset = -0.06 * np.cos(angle)
         y_offset = -0.06 * np.sin(angle)
         if label != '0': 
-            ax.text(x + x_offset, y + y_offset, label, ha='center', va='center', color='green', fontsize=10, rotation=0, rotation_mode='anchor')
+            ax.text(x + x_offset, y + y_offset, label, ha='center', va='center', color='blue', fontsize=10, rotation=0, rotation_mode='anchor')
         else:
-            ax.text(x + 0.04, y + y_offset, label, ha='center', va='center', color='green', fontsize=10, rotation=0, rotation_mode='anchor')
+            ax.text(x + 0.04, y + y_offset, label, ha='center', va='center', color='blue', fontsize=10, rotation=0, rotation_mode='anchor')
     
     x_line = np.linspace(-0.7, 0.7, len(multiples))
     y_line1 = np.zeros_like(x_line) + 0.2
     y_line2 = np.zeros_like(x_line) - 0.2
-    ax.plot(x_line, y_line1, 'b-', linewidth=2)
-    ax.scatter(x_line, y_line1, color='red')
-    for i, (x, y, label, color) in enumerate(zip(x_line, y_line1, line_labels, colors)):
-        ax.text(x, y+0.12, label, ha='center', va='top', color='red')
+    ax.plot(x_line, y_line1, 'k-', linewidth=2)
+    ax.scatter(x_line, y_line1, color='black')
+    for i, (x, y, label) in enumerate(zip(x_line, y_line1, line_labels)):
+        ax.text(x, y+0.12, label, ha='center', va='top', color='black')
 
     ax.plot(x_line, y_line2, 'b-', linewidth=2)
-    ax.scatter(x_line, y_line2, color='green')
-    for i, (x, y, label, color) in enumerate(zip(x_line, y_line2, circle_labels, colors)):
-        ax.text(x, y-0.12, label, ha='center', va='bottom', color='green')
+    ax.scatter(x_line, y_line2, color='blue')
+    for i, (x, y, label) in enumerate(zip(x_line, y_line2, circle_labels)):
+        ax.text(x, y-0.13, label, ha='center', va='bottom', color='blue')
 
     for x1, y1, x2, y2 in zip(x_line, y_line1, x_line, y_line2):
         ax.arrow(x1, y1, 0, y2-y1+0.05, head_width=0.02, head_length=0.05, fc='k', ec='k')
     
-    ax.text(0, 0.6, r'Number Line $\rightarrow$ Number Circle', ha='center', fontsize=12)
-    ax.text(0, 0.5, r'$f(x) = 2\pi x$', ha='center', fontsize=12)
-    ax.text(0, 0.4, r'$[0,1] \rightarrow [0,2\pi]$', ha='center', fontsize=12)
+    ax.text(0, 0.6, r'Number Line $\rightarrow$', ha='right', fontsize=12)
+    ax.text(0, 0.6, ' Number Circle', color='blue', ha='left', fontsize=12)
+    ax.text(0, 0.5, r'$f(x) =$', ha='right', fontsize=12)
+    ax.text(0, 0.5, r'$ 2\pi x$', color='blue',ha='left', fontsize=12)
+    ax.text(0, 0.4, r'$[0,1] \rightarrow$', ha='right', fontsize=12)
+    ax.text(0, 0.4, r'$ [0,2\pi]$', color='blue', ha='left', fontsize=12)
     ax.text(0, -0.5, r'Removing 0,1 logical edges from models.', ha='center')
     ax.axis('equal')
     ax.set_xticks([])

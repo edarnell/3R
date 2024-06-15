@@ -2,8 +2,8 @@
     "latex-workshop.latex.tools": [
         {
             "name": "texPdf",
-            "command": "zsh",
-            //"command": "C:\\Program Files\\Git\\bin\\bash.exe",
+            //"command": "zsh",
+            "command": "C:\\Program Files\\Git\\bin\\bash.exe",
             "args": [
                 ".vscode/tex_pdf.sh",
                 "%DOC%"
