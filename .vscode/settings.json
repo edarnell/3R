@@ -3,7 +3,6 @@
         {
             "name": "texPdf",
             "command": "zsh",
-            //"command": "C:\\Program Files\\Git\\bin\\bash.exe",
             "args": [
                 ".vscode/tex_pdf.sh",
                 "%DOC%"
